@@ -2,23 +2,24 @@ package com.example.hwa.firebase;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 
 import com.google.firebase.analytics.FirebaseAnalytics;
 
-public class MainActivity extends AppCompatActivity {
+/**
+ * Created by hwa on 2016. 9. 27..
+ */
 
+public class CActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_c);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -26,35 +27,17 @@ public class MainActivity extends AppCompatActivity {
         FirebaseAnalytics mAnalytics = FirebaseAnalytics.getInstance(this);
 
         Bundle params = new Bundle();
-        params.putString("page", "Main Activity");
-        params.putString("option", "1");
+        params.putString("page", "C Activity");
+        params.putString("option", "3");
         mAnalytics.logEvent("load_page", params);
 
-        Button btnb = (Button) findViewById(R.id.button_goto_b);
-        btnb.setOnClickListener(new View.OnClickListener() {
+
+        Button btnf = (Button) findViewById(R.id.button_goto_f);
+        btnf.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this, BActivity.class);
+                Intent i = new Intent(CActivity.this, BActivity.class);
                 startActivity(i);
-            }
-        });
-
-        Button btnc = (Button) findViewById(R.id.button_goto_c);
-        btnc.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(MainActivity.this, CActivity.class);
-                startActivity(i);
-            }
-        });
-
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
             }
         });
     }
